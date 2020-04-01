@@ -10,5 +10,13 @@ export const validate = element => {
     error = !valid ? [valid, message] : error;
   }
 
+  if (element.validation.minNum) {
+    const valid = parseInt(element.value.trim()) >= element.validation.minNum;
+    const message = `${
+      !valid ? `I am sorry, the minimum is ${element.validation.minNum} ` : ''
+    }`;
+    error = !valid ? [valid, message] : error;
+  }
+
   return error;
 };
